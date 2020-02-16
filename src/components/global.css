@@ -1,0 +1,25 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body.dark-mode {
+  --background: black;
+  --text: white;
+  --primary: hotpink;
+}
+
+body.light-mode {
+  --background: white;
+  --text: black;
+  --primary: royalblue;
+}
+
+body {
+  color: var(--text);
+  background: var(--background);
+}
+
+a {
+  color: var(--primary);
+}

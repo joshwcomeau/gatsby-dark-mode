@@ -9,10 +9,9 @@ export default styled.button`
   cursor: pointer;
   text-align: left;
   font: inherit;
-  color: ${p => p.theme.textColor};
 
   &:focus {
-    outline: 2px auto ${p => p.theme.primaryColor}
+    outline: 2px auto var(--primary)
     outline-offset: 2px;
   }
 

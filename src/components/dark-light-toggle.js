@@ -3,14 +3,23 @@ import useDarkMode from 'use-dark-mode';
 import styled from 'styled-components';
 
 import UnstyledButton from './unstyled-button';
+import FadeIn from './fade-in';
 
 const DarkLightToggle = () => {
   const { value: isDark, toggle } = useDarkMode();
 
+  const isBeingPrebuilt = typeof window === 'undefined';
+
+  if (isBeingPrebuilt) {
+    return null;
+  }
+
   return (
-    <Button aria-hidden="true" onClick={toggle}>
-      {isDark ? <Moon /> : <Sun />}
-    </Button>
+    <FadeIn>
+      <UnstyledButton aria-hidden="true" onClick={toggle}>
+        {isDark ? <Moon /> : <Sun />}
+      </UnstyledButton>
+    </FadeIn>
   );
 };
 
@@ -20,7 +29,7 @@ const Sun = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    stroke="var(--text)"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -43,7 +52,7 @@ const Moon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    stroke="var(--text)"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -51,6 +60,5 @@ const Moon = () => (
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
   </svg>
 );
-const Button = styled(UnstyledButton)``;
 
 export default DarkLightToggle;
