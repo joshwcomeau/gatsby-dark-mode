@@ -1,7 +1,26 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import React from 'react';
+import useDarkMode from 'use-dark-mode';
+import { ThemeProvider } from 'styled-components';
 
-// You can delete this file if you're not using it
+import GlobalStyles from './src/components/global-styles';
+
+const App = ({ children }) => {
+  const { value: isDark } = useDarkMode();
+
+  return (
+    <ThemeProvider
+      theme={{
+        textColor: isDark ? 'white' : 'black',
+        backgroundColor: isDark ? 'black' : 'white',
+        primaryColor: isDark ? 'hotpink' : '#1c49ce',
+      }}
+    >
+      <GlobalStyles />
+      {children}
+    </ThemeProvider>
+  );
+};
+
+export const wrapRootElement = ({ element }) => {
+  return <App>{element}</App>;
+};
